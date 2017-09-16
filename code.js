@@ -77,6 +77,7 @@ window.onload = function () {
         scene.add(spotLight_1);
         // чтобы освещение нормально работало, я заменил с "MeshBasicMaterial" на "MeshLambertMaterial"
 
+
         // разрешить использование теней в 3D мире
         renderer.shadowMapEnabled = true;
         // применить тень к плоскости
@@ -94,4 +95,12 @@ window.onload = function () {
 
         // выводим на экран то, что видит камера
         renderer.render(scene, camera);
+
+        // создаём анимацию кубика
+        let myInterval = setInterval(function(){
+            cube_1.position.x += 0.2;
+            cube_1.position.z += 0.1;
+            // выводим на экран то, что видит камера
+            renderer.render(scene, camera);
+        }, 50);
 };
