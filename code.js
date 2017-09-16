@@ -12,6 +12,7 @@ window.onload = function () {
         // задаём размер окна с 3D графикой
         renderer.setSize(window.innerWidth, window.innerHeight);
 
+
         // создать вспомогательные осевые линии
         let axes = new THREE.AxisHelper(80);
         // добавить вспомогательные осевые линии на сцену
@@ -76,8 +77,20 @@ window.onload = function () {
         scene.add(spotLight_1);
         // чтобы освещение нормально работало, я заменил с "MeshBasicMaterial" на "MeshLambertMaterial"
 
+        // разрешить использование теней в 3D мире
+        renderer.shadowMapEnabled = true;
+        // применить тень к плоскости
+        plane_1.receiveShadow = true;
+        // применить тень к кубику
+        cube_1.castShadow = true;
+        // применить тень к сфере
+        sphere_1.castShadow = true;
+        // говорим, что источник света может реализовывать тень
+        spotLight_1.castShadow = true;
+
 
         document.getElementById("objectForOutput3D").append(renderer.domElement);
+
 
         // выводим на экран то, что видит камера
         renderer.render(scene, camera);
