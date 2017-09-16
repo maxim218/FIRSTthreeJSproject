@@ -21,7 +21,7 @@ window.onload = function () {
         // описываем размер плоскости
         let planeGeometry_1 = new THREE.PlaneGeometry(50, 30, 1, 1);
         // описываем цвет плоскости
-        let planeMaterial_1 = new THREE.MeshBasicMaterial({color: "#ffde1e"});
+        let planeMaterial_1 = new THREE.MeshLambertMaterial({color: "#ffde1e"});
         // создаём плоскость с заданными выше параметрами
         let plane_1 = new THREE.Mesh(planeGeometry_1, planeMaterial_1);
         // поворачиваем плоскость на 90 градусов
@@ -36,8 +36,8 @@ window.onload = function () {
 
         // описываем размер куба
         let cubeGeometry_1 = new THREE.CubeGeometry(4, 4, 2);
-        // описываем цвет куба и говорим, чтобы отображались только его рёбра (wireframe)
-        let cubeMaterial_1 = new THREE.MeshBasicMaterial({color: "#0000FF", wireframe: true});
+        // описываем цвет куба
+        let cubeMaterial_1 = new THREE.MeshLambertMaterial({color: "#0000FF"});
         // создаём куб с заданными выше параметрами
         let cube_1 = new THREE.Mesh(cubeGeometry_1, cubeMaterial_1);
         // задаём позицию куба
@@ -49,8 +49,8 @@ window.onload = function () {
 
         // задаём диаметр сферы и количество сегментов
         let sphereGeometry_1 = new THREE.SphereGeometry(4, 25, 25);
-        // задаём цвет сферы и говорим, чтобы отображались только её опорные рёбра (wireframe)
-        let sphereMaterial_1 = new THREE.MeshBasicMaterial({color: "#2F4F4F", wireframe: true});
+        // задаём цвет сферы
+        let sphereMaterial_1 = new THREE.MeshLambertMaterial({color: "#2F4F4F"});
         // создаём сферу с описанными выше параметрами
         let sphere_1 = new THREE.Mesh(sphereGeometry_1, sphereMaterial_1);
         // задаём позицию сферы
@@ -66,6 +66,16 @@ window.onload = function () {
         camera.position.z = 50;
         // делаем камеру повёрнутой в сторону куба
         camera.lookAt(cube_1.position);
+
+
+        // создаём источник света и его цвет
+        let spotLight_1 = new THREE.SpotLight("#CCCCCC");
+        // описывае координаты источника света
+        spotLight_1.position.set( 10, 20, 8 );
+        // добавляем на сцену источник света
+        scene.add(spotLight_1);
+        // чтобы освещение нормально работало, я заменил с "MeshBasicMaterial" на "MeshLambertMaterial"
+
 
         document.getElementById("objectForOutput3D").append(renderer.domElement);
 
