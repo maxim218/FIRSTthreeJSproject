@@ -3,14 +3,14 @@ window.onload = function () {
         let scene = new THREE.Scene();
 
         // создаём камеру
-        let camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+        let camera = new THREE.PerspectiveCamera(45, 800 / 600, 0.1, 1000);
 
         // создаём визуализатор
         let renderer = new THREE.WebGLRenderer();
         // задаём цвет фона
         renderer.setClearColor("#D2691E");
         // задаём размер окна с 3D графикой
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(800, 600);
 
 
         // создать вспомогательные осевые линии
